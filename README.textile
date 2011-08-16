@@ -8,7 +8,7 @@ h2. Usage
   <code>
 require 'lib/namecheap'
 
-namecheap = Namecheap.new
+namecheap = Namecheap::Client.new
 namecheap.is_domain_availble? 'hashrocket.com' # => false
   </code>
 </pre>

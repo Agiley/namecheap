@@ -1,7 +1,6 @@
-require File.dirname(__FILE__) + '/spec_helper'
-require File.dirname(__FILE__) + '/../lib/namecheap'
+require File.expand_path('../../spec_helper', __FILE__)
 
-describe NamecheapDomainCheckResponse  do
+describe Namecheap::DomainCheckResponse  do
   
   describe "successful response from namecheap" do
     before(:each) do
@@ -18,7 +17,7 @@ describe NamecheapDomainCheckResponse  do
 			    "ExecutionTime"=>"0.01", 
 			    "xmlns"=>"http://api.namecheap.com/xml.response"}} 
 
-      @response = NamecheapDomainCheckResponse.new(@domain_check_response_hash)
+      @response = Namecheap::DomainCheckResponse.new(@domain_check_response_hash)
 
     end
 
@@ -27,19 +26,19 @@ describe NamecheapDomainCheckResponse  do
     end
 
     it "should report that domain1.com is available" do
-      @response.items[1].available.should be_true
+      @response.items[0].available.should be_true
     end
 
     it "should report that domain2.com is not available" do
-      @response.items[2].available.should be_false
+      @response.items[1].available.should be_false
     end
 
     it "should report errors if there are any" do
-      @response.items[0].error.should == "750"
+      @response.items[2].error.should == "750"
     end
 
     it "should include a description if there are errors" do
-      @response.items[0].description == "No response from the registry"
+      @response.items[2].description == "No response from the registry"
     end
   end
 

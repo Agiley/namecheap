@@ -1,0 +1,15 @@
+---
+development:
+  key: apikey
+  username: apiuser
+  client_ip: 127.0.0.1
+  
+test:
+  key: apikey
+  username: apiuser
+  client_ip: 127.0.0.1
+
+production:
+  key: apikey
+  username: apiuser
+  client_ip: 127.0.0.1

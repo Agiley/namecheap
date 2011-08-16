@@ -1,12 +1,26 @@
+$LOAD_PATH << "." unless $LOAD_PATH.include?(".")
+
 begin
-  require 'spec'
-rescue LoadError
-  require 'rubygems'
-  gem 'rspec'
-  require 'spec'
+  require "rubygems"
+  require "bundler"
+
+  if Gem::Version.new(Bundler::VERSION) <= Gem::Version.new("0.9.5")
+    raise RuntimeError, "Your bundler version is too old." +
+     "Run `gem install bundler` to upgrade."
+  end
+
+  # Set up load paths for all bundled gems
+  Bundler.setup
+rescue Bundler::GemNotFound
+  raise RuntimeError, "Bundler couldn't find some gems." +
+    "Did you run \`bundlee install\`?"
 end
 
-require 'activesupport'
-require 'activerecord'
+require "active_record"
+Bundler.require
 
-$:.unshift(File.dirname(__FILE__) + '/../lib')
+require File.expand_path('../../lib/namecheap', __FILE__)
+
+RSpec.configure do |config|
+  config.mock_with :mocha
+end
