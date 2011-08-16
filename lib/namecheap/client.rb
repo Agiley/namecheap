@@ -3,8 +3,6 @@ module Namecheap
     attr_reader :environment, :username, :key, :client_ip
 
     def initialize(options = {})
-      #config = YAML.load_file("#{File.dirname(__FILE__)}/config.yml")
-      
       config = YAML.load_file(File.join(Rails.root, "config/namecheap.yml"))[Rails.env] rescue nil
       config ||= YAML.load_file(File.join(File.dirname(__FILE__), "../generators/templates/namecheap.yml"))[Rails.env] rescue nil
       config.symbolize_keys! if (config)
