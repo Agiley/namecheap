@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
     "lib/namecheap/railtie.rb",
     "lib/namecheap/response.rb",
     "lib/tasks/namecheap_tasks.rake",
+    "namecheap.gemspec",
     "spec/namecheap/namecheap_domain_check_response_spec.rb",
     "spec/namecheap/namecheap_response_spec.rb",
     "spec/namecheap/namecheap_spec.rb",
