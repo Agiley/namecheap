@@ -4,12 +4,27 @@ Allow the ability to check domain availability through namecheap.com API.
 
 h2. Usage
 
+In your Gemfile:
 <pre>
   <code>
-require 'lib/namecheap'
+gem 'namecheap', :git => 'git://github.com/Agiley/namecheap.git'
+  </code>
+</pre>
 
+Generate namecheap config file:
+
+<pre>
+  <code>
+rails generate namecheap
+  </code>
+</pre>
+
+Use the client:
+
+<pre>
+  <code>
 namecheap = Namecheap::Client.new
-namecheap.is_domain_availble? 'hashrocket.com' # => false
+namecheap.is_domain_available? 'hashrocket.com' # => false
   </code>
 </pre>
 
@@ -18,3 +33,4 @@ h2. Contributors
 * "Hashrocket":http://www.hashrocket.com
 * "Corey Grusden":http://coreygrusden.com
 * "Big Tiger":http://bigtiger.github.com
+* "Sebastian Johnsson":http://github.com/Agiley
