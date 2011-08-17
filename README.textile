@@ -5,6 +5,7 @@ Allow the ability to check domain availability through namecheap.com API.
 h2. Usage
 
 In your Gemfile:
+
 <pre>
   <code>
 gem 'namecheap', :git => 'git://github.com/Agiley/namecheap.git'
