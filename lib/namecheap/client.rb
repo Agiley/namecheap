@@ -1,3 +1,5 @@
+require 'httparty'
+
 module Namecheap
   class Client
     attr_reader :environment, :username, :key, :client_ip
