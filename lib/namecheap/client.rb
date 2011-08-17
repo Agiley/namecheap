@@ -16,8 +16,12 @@ module Namecheap
     end
 
     def is_domain_available?(domain)
-      results = domain_check(domain).items
+      results = domains_available?(domain)
       return results.nil? ? false : results.first.available
+    end
+    
+    def domains_available?(domains)
+      results = domain_check(domains).items
     end
 
     def domain_check(domain)
