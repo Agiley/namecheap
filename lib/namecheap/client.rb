@@ -39,10 +39,17 @@ module Namecheap
       end
     end
     
-    def do_query(api_method, options)
+    def do_query(api_method, options, max_retries = 3)
+      retries = 0
       query = "#{api_url}/xml.response?ApiUser=#{@username}&ApiKey=#{@key}&UserName=#{@username}&ClientIp=#{@client_ip}&Command=#{api_method}"
       query += options
-      HTTParty.get(query)
+      
+      begin
+        return HTTParty.get(query)
+      rescue
+        retries += 1
+        retry if (retries < max_retries)
+      end
     end
 
   end
