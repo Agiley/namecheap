@@ -15,7 +15,7 @@ module Namecheap
     end
 
     def items
-      response = @response["ApiResponse"]["CommandResponse"]
+      response = @response["ApiResponse"]["CommandResponse"] rescue nil
       raise Namecheap::NilResponse if response.nil?
       response.delete_if { |key, value| key == "Type" }
     end
