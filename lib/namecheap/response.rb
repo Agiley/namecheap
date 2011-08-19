@@ -16,7 +16,7 @@ module Namecheap
 
     def items
       response = @response["ApiResponse"]["CommandResponse"] rescue nil
-      response.delete_if { |key, value| key == "Type" }
+      response.delete_if { |key, value| key == "Type" } if (response)
     end
   end
 end
