@@ -5,11 +5,11 @@ module Namecheap
     end
 
     def status
-      @response["ApiResponse"]["Status"] 
+      @response["ApiResponse"]["Status"] rescue nil
     end
 
     def message
-      if @response["ApiResponse"]["Errors"].any?
+      if (@response["ApiResponse"]["Errors"].any?)
         @response["ApiResponse"]["Errors"]["Error"]
       end
     end

@@ -67,7 +67,7 @@ describe "NamecheapAPI Wrapper"  do
   describe "#is_domain_available?" do
     it "should return false if connection fails" do
       namecheap = Namecheap::Client.new(:apikey => 'BADKEY')
-      lambda { namecheap.is_domain_available?('fakedomain.tld').should be_false }.should raise_error(Namecheap::NilResponse)
+      namecheap.is_domain_available?('fakedomain.tld').should == false
     end
 
     it "should return true if connections succeeds and domain is available" do
@@ -78,7 +78,7 @@ describe "NamecheapAPI Wrapper"  do
 
     it "should return false if connections succeeds and domain is not available" do
       namecheap = Namecheap::Client.new
-      lambda { namecheap.is_domain_available?('hashrocket.com').should be_false }.should raise_error(Namecheap::NilResponse)
+      namecheap.is_domain_available?('hashrocket.com').should == false
     end
   end
 end

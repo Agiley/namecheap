@@ -45,12 +45,9 @@ module Namecheap
       query += options
       
       begin
-        response = HTTParty.get(query)
-        raise Namecheap::NilResponse if response.nil?
-      rescue
+        response = HTTParty.get(query) rescue nil
         retries += 1
-        retry if (retries < max_retries)
-      end
+      end while (response.nil? && retries < max_retries)
       
       return response
     end
