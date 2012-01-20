@@ -5,7 +5,7 @@ module Namecheap
     end
 
     def status
-      @response["ApiResponse"]["Status"] rescue nil
+      return (@response.has_key?("ApiResponse") && @response["ApiResponse"].has_key?("Status")) ? @response["ApiResponse"]["Status"] : nil
     end
 
     def message
@@ -15,7 +15,7 @@ module Namecheap
     end
 
     def items
-      response = @response["ApiResponse"]["CommandResponse"] rescue nil
+      response = (@response.has_key?("ApiResponse") && @response["ApiResponse"].has_key?("CommandResponse")) ? @response["ApiResponse"]["CommandResponse"] : nil
       response.delete_if { |key, value| key == "Type" } if (response)
     end
   end

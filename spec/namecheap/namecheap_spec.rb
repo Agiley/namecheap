@@ -59,7 +59,7 @@ describe "NamecheapAPI Wrapper"  do
   describe "#domain_check" do
     it "should build query with multiple domains" do
       namecheap = Namecheap::Client.new()
-      namecheap.expects(:do_query).with("namecheap.domains.check", "&DomainList=domain1.com,domain2.com")
+      namecheap.expects(:do_query).with("namecheap.domains.check", "&DomainList=domain1.com,domain2.com", 0)
       namecheap.domain_check(['domain1.com','domain2.com'])
     end
   end
