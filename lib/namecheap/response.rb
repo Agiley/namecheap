@@ -32,7 +32,7 @@ module Namecheap
         set_gmt_time_difference
         
         @status   =   @status.downcase.to_sym
-        @success  =   @status.eql?(:success)
+        @success  =   @status.eql?(:ok)
       end
     end
 

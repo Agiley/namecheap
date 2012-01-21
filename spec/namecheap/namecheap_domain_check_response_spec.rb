@@ -27,6 +27,11 @@ describe Namecheap::DomainCheckResponse  do
     it "should have a domain check result" do
       @response.results.length.should == 3
     end
+    
+    it "should be a valid result" do
+      @response.status.should == :ok
+      @response.success.should be_true
+    end
 
     it "should report that domain1.com is available" do
       @response.results[0].available.should be_true
