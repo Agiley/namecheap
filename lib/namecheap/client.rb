@@ -24,13 +24,13 @@ module Namecheap
     end
     
     def domains_available?(domains, max_retries = 0)
-      result      =   domain_check(domains, max_retries)
-      results     =   result.items
+      response    =   domain_check(domains, max_retries)
+      return response.results
     end
 
     def domain_check(domain, max_retries = 0)
       domain      =   domain.join(",") if domain.is_a?(Array)
-      response    =   do_query("namecheap.domains.check", "&DomainList=#{domain}", max_retries)      
+      response    =   do_query("namecheap.domains.check", "&DomainList=#{domain}", max_retries)
       response    =   Namecheap::DomainCheckResponse.new(response)
       
       return response

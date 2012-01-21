@@ -14,24 +14,47 @@
 
 module Namecheap
   class Response
+    attr_accessor :response, :status, :success
+    attr_accessor :requested_command, :command_response, :errors, :warnings
+    attr_accessor :server, :gmt_time_difference, :execution_time
+    
     def initialize(response)
       @response = response
-    end
-
-    def status
-      return (@response && @response.has_key?("ApiResponse") && @response["ApiResponse"].has_key?("Status")) ? @response["ApiResponse"]["Status"] : nil
-    end
-
-    def message
-      if (@response && @response.has_key?("ApiResponse") && @response["ApiResponse"].has_key?("Errors") && @response["ApiResponse"]["Errors"].any?)
-        @response["ApiResponse"]["Errors"]["Error"]
+      @response = (@response && @response.has_key?("ApiResponse")) ? @response["ApiResponse"] : nil
+      
+      if (@response)
+        variables = ["CommandResponse", "Status", "RequestedCommand", "Server", "ExecutionTime"]
+        variables.each { |variable| set_variable(variable) }
+        
+        status_variables = ["Errors", "Warnings"]
+        status_variables.each { |status_variable| set_status_variable(status_variable) }
+          
+        set_gmt_time_difference
+        
+        @status   =   @status.downcase.to_sym
+        @success  =   @status.eql?(:success)
       end
     end
 
-    def items
-      response = (@response && @response.has_key?("ApiResponse") && @response["ApiResponse"].has_key?("CommandResponse")) ? @response["ApiResponse"]["CommandResponse"] : nil
-      response.delete_if { |key, value| key == "Type" } if (response)
-      return response
+    def set_variable(key)
+      value = (@response.has_key?(key)) ? @response[key] : nil
+      send("#{key.underscore}=", value)
     end
+    
+    def set_gmt_time_difference
+      @gmt_time_difference = (@response.has_key?("GMTTimeDifference")) ? @response["GMTTimeDifference"] : nil
+    end
+    
+    def set_status_variable(key)
+      values  =   []
+      nodes   =   (@response.has_key?(key) && @response[key] && @response[key].any?) ? @response[key] : []
+      
+      nodes.each do |type, message|
+        values << Namecheap::Status.new(type, message) if (type && message)
+      end
+      
+      send("#{key.underscore}=", values)
+    end
+
   end
 end

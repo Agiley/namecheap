@@ -43,12 +43,17 @@ describe "NamecheapAPI Wrapper"  do
   describe "Attempt to connect with bad credentials" do
     it "should report an error on erroneous account information" do
       namecheap = Namecheap::Client.new
-      namecheap.domain_check("fakedomain").status.should == "ERROR"
-      end
+      response = namecheap.domain_check("fakedomain")
+      response.status.should == :error
+      response.success.should be_false
+    end
 
     it "should give error message for invalid api key when using an invalid key" do
       namecheap = Namecheap::Client.new
-      namecheap.domain_check("fakedomain").message.should include("API Key is invalid")
+      response = namecheap.domain_check("fakedomain")
+      response.status.should == :error
+      response.success.should be_false
+      response.errors.first.message.should include("API Key is invalid")
     end
   end
 

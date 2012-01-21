@@ -13,12 +13,12 @@ describe Namecheap::Response  do
 
   it "should return a status" do
     response = Namecheap::Response.new(@bad_response_hash)
-    response.status.should == "ERROR"
+    response.status.should == :error
   end
 
   it "should give error message for invalid api key when using an invalid key" do
     response = Namecheap::Response.new(@bad_response_hash)
-    response.message.should include("API Key is invalid")
+    response.errors.first.message.should include("API Key is invalid")
   end
 end
 

@@ -8,13 +8,13 @@ describe Namecheap::DomainCheckResponse  do
 	  "ApiResponse" => 
 	    {"Status"=>"OK", 
 			 "Errors"=>{},  
-			 "CommandResponse" => 
-			    {"Type" => "namecheap.domains.check",
-			     "DomainCheckResult" => [
+			 "CommandResponse" => {
+  			   "DomainCheckResult" => [
   		        {"Domain" => "domain1.com", "Available" => "true"},
   		        {"Domain" => "domain2.com", "Available" => "false"},
   		        {"Domain" => "domain.wtf", "Available" => "error", "ErrorNo" => "750", "Description" => "No response from the registry"}
-  		      ]},
+  		      ],
+  			 },
   	    "GMTTimeDifference"=>"--6:00", 
   	    "RequestedCommand"=>"namecheap.domains.check", 
   	    "Server"=>"SERVER159", 
@@ -25,23 +25,23 @@ describe Namecheap::DomainCheckResponse  do
     end
 
     it "should have a domain check result" do
-      @response.items.length.should == 3
+      @response.results.length.should == 3
     end
 
     it "should report that domain1.com is available" do
-      @response.items[0].available.should be_true
+      @response.results[0].available.should be_true
     end
 
     it "should report that domain2.com is not available" do
-      @response.items[1].available.should be_false
+      @response.results[1].available.should be_false
     end
 
     it "should report errors if there are any" do
-      @response.items[2].error.should == "750"
+      @response.results[2].error.should == "750"
     end
 
     it "should include a description if there are errors" do
-      @response.items[2].description == "No response from the registry"
+      @response.results[2].description == "No response from the registry"
     end
   end
 
@@ -67,7 +67,7 @@ end
   # <ApiResponse Status="OK" xmlns="http://api.namecheap.com/xml.response">
   #  <Errors />
   #  <RequestedCommand>namecheap.domains.check</RequestedCommand>
-  #  <CommandResponse Type="namecheap.domains.check">
+  #  <CommandResponse>
   #    <DomainCheckResult Domain="domain1.com" Available="true" />
   #    <DomainCheckResult Domain="availabledomain.com" Available="false" />
   #    <DomainCheckResult Domain="err.tld" Available="error" ErrorNo="750" Description="No response from the registry" />
@@ -76,5 +76,3 @@ end
   #  <GMTTimeDifference>+5</GMTTimeDifference>
   #  <ExecutionTime>32.76</ExecutionTime>
   #</ApiResponse>
-
-
