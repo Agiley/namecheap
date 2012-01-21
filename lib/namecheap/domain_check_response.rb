@@ -5,7 +5,7 @@ module Namecheap
     def initialize(response)
       super(response)
       
-      results = (@command_response && @command_response.has_key?("DomainCheckResult")) ? @command_response["DomainCheckResult"] : nil
+      results = (@success && @command_response && @command_response.has_key?("DomainCheckResult")) ? @command_response["DomainCheckResult"] : nil
       
       if (results && results.is_a?(Hash))
         @results = [DomainCheck.new(results)]
