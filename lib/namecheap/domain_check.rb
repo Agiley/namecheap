@@ -4,7 +4,7 @@ module Namecheap
 
     def initialize(item)
       @domain       =   item["Domain"]
-      @available    =   (item["Available"] == "true" ? true : false)
+      @available    =   (item["Available"] == "true") ? true : false
       @error        =   item["ErrorNo"]
       @description  =   item["Description"]
     end

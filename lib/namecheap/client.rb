@@ -17,20 +17,21 @@ module Namecheap
     end
 
     def is_domain_available?(domain, max_retries = 0)
-      results = domains_available?(domain, max_retries)
-      available = (results && results.any?) ? results.first.available : false
+      results     =   domains_available?(domain, max_retries)
+      available   =   (results && results.any?) ? results.first.available : false
+      
       return available
     end
     
     def domains_available?(domains, max_retries = 0)
-      result  = domain_check(domains, max_retries)
-      results = result.items
+      result      =   domain_check(domains, max_retries)
+      results     =   result.items
     end
 
     def domain_check(domain, max_retries = 0)
-      domain    =   domain.join(",") if domain.is_a? Array
-      response  =   do_query("namecheap.domains.check", "&DomainList=#{domain}", max_retries)
-      response  =   Namecheap::DomainCheckResponse.new(response)
+      domain      =   domain.join(",") if domain.is_a?(Array)
+      response    =   do_query("namecheap.domains.check", "&DomainList=#{domain}", max_retries)      
+      response    =   Namecheap::DomainCheckResponse.new(response)
       
       return response
     end
@@ -45,6 +46,7 @@ module Namecheap
       end
     end
     
+    #For API Call details, see http://developer.namecheap.com/docs/doku.php?id=api-reference:domains:check
     def do_query(api_method, options, max_retries = 0)
       response, retries = nil, 0
       query = "#{api_url}/xml.response?ApiUser=#{@username}&ApiKey=#{@key}&UserName=#{@username}&ClientIp=#{@client_ip}&Command=#{api_method}"
