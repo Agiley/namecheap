@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{namecheap}
+  s.name = "namecheap"
   s.version = "0.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sebastian Johnsson"]
-  s.date = %q{2011-08-17}
-  s.description = %q{Wrapper for Namecheap API}
-  s.email = %q{sebastian@agiley.se}
+  s.date = "2012-01-23"
+  s.description = "Wrapper for Namecheap API"
+  s.email = "sebastian@agiley.se"
   s.extra_rdoc_files = [
     "README.textile"
   ]
@@ -26,9 +26,9 @@ Gem::Specification.new do |s|
     "lib/namecheap/client.rb",
     "lib/namecheap/domain_check.rb",
     "lib/namecheap/domain_check_response.rb",
-    "lib/namecheap/nil_response.rb",
     "lib/namecheap/railtie.rb",
     "lib/namecheap/response.rb",
+    "lib/namecheap/status.rb",
     "lib/tasks/namecheap_tasks.rake",
     "namecheap.gemspec",
     "spec/namecheap/namecheap_domain_check_response_spec.rb",
@@ -36,10 +36,10 @@ Gem::Specification.new do |s|
     "spec/namecheap/namecheap_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/Agiley/namecheap}
+  s.homepage = "http://github.com/Agiley/namecheap"
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{Wrapper for Namecheap API}
+  s.rubygems_version = "1.8.10"
+  s.summary = "Wrapper for Namecheap API"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
