@@ -20,7 +20,7 @@ module Namecheap
     
     def initialize(response)
       @response = response
-      @response = (@response && @response.has_key?("ApiResponse")) ? @response["ApiResponse"] : nil
+      @response = (@response && @response.is_a?(Hash) && @response.has_key?("ApiResponse")) ? @response["ApiResponse"] : nil
       
       if (@response)
         variables = ["CommandResponse", "Status", "RequestedCommand", "Server", "ExecutionTime"]
