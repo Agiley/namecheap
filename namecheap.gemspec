@@ -3,12 +3,11 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 1.3.5") if s.respond_to? :required_rubygems_version=
 
   s.name = "namecheap"
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.homepage      =   "http://github.com/Agiley/namecheap"
   s.email         =   "sebastian@agiley.se"
   s.authors       =   ["Sebastian Johnsson"]
-  s.date          =   "2012-01-23"
   s.description   =   "Wrapper for Namecheap API"
   s.summary       =   "Wrapper for Namecheap API"
 
@@ -31,6 +30,8 @@ Gem::Specification.new do |s|
  lib/namecheap/client.rb
  lib/namecheap/domain_check.rb
  lib/namecheap/domain_check_response.rb
+ lib/namecheap/extensions/hash.rb
+ lib/namecheap/extensions/string.rb
  lib/namecheap/railtie.rb
  lib/namecheap/response.rb
  lib/namecheap/status.rb
