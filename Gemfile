@@ -1,10 +1,13 @@
 source "http://rubygems.org"
 
-gem 'rails'
-gem 'httparty'
-
 group :development, :test do
-  gem 'jeweler'
   gem 'rspec'
   gem 'mocha'
 end
+
+platforms :jruby do
+  gem 'jruby-openssl', '~> 0.7'
+end
+
+gemspec
+

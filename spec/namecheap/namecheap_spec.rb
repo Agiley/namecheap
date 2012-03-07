@@ -2,41 +2,40 @@ require File.expand_path('../../spec_helper', __FILE__)
 
 describe "NamecheapAPI Wrapper"  do
   describe "initializating settings" do
-    
+
     describe "with defaults" do
       it "should contain a username" do
-      	namecheap = Namecheap::Client.new
-      	namecheap.send(:username).should == 'apiuser'
+        namecheap = Namecheap::Client.new
+        namecheap.send(:username).should == 'apiuser'
       end
-      
+
       it "should contain a key" do
-      	namecheap = Namecheap::Client.new
-      	namecheap.send(:key).should == 'apikey'
+        namecheap = Namecheap::Client.new
+        namecheap.send(:key).should == 'apikey'
       end
-      
+
       it "should contain a client_ip" do
-      	namecheap = Namecheap::Client.new
-      	namecheap.send(:client_ip).should == '127.0.0.1'
+        namecheap = Namecheap::Client.new
+        namecheap.send(:client_ip).should == '127.0.0.1'
       end
     end
 
     describe "with defaults overidden" do
-      
+
       it "shoud contain a overidden username" do
-      	namecheap = Namecheap::Client.new(:username => 'testuser')
-      	namecheap.send(:username).should == 'testuser'
-      end	  
+        namecheap = Namecheap::Client.new(:username => 'testuser')
+        namecheap.send(:username).should == 'testuser'
+      end
 
       it "shoud contain a key" do
-      	namecheap = Namecheap::Client.new(:key => 'testkey')
-      	namecheap.send(:key).should == 'testkey'
+        namecheap = Namecheap::Client.new(:key => 'testkey')
+        namecheap.send(:key).should == 'testkey'
       end
-      
+
       it "shoud contain a client_ip" do
-      	namecheap = Namecheap::Client.new(:client_ip => '66.11.22.44')
-      	namecheap.send(:client_ip).should == '66.11.22.44'
+        namecheap = Namecheap::Client.new(:client_ip => '66.11.22.44')
+        namecheap.send(:client_ip).should == '66.11.22.44'
       end
-      
     end
   end
 
@@ -58,13 +57,12 @@ describe "NamecheapAPI Wrapper"  do
   end
 
   describe "Attempt to connect with valid credentials" do
-     
   end
 
   describe "#domain_check" do
     it "should build query with multiple domains" do
-      namecheap = Namecheap::Client.new()
-      namecheap.expects(:do_query).with("namecheap.domains.check", "&DomainList=domain1.com,domain2.com", 0)
+      namecheap = Namecheap::Client.new
+      namecheap.expects(:perform_query).with("namecheap.domains.check", {"DomainList" => "domain1.com,domain2.com"}, {})
       namecheap.domain_check(['domain1.com','domain2.com'])
     end
   end
@@ -84,6 +82,9 @@ describe "NamecheapAPI Wrapper"  do
     it "should return false if connections succeeds and domain is not available" do
       namecheap = Namecheap::Client.new
       namecheap.is_domain_available?('hashrocket.com').should == false
+
+      #To test behind a proxy:
+      #namecheap.is_domain_available?('hashrocket.com', :proxy => {:uri => URI('http://proxy.com:1234')})
     end
   end
 end

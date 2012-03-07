@@ -16,7 +16,6 @@ rescue Bundler::GemNotFound
     "Did you run \`bundlee install\`?"
 end
 
-require "active_record"
 Bundler.require
 
 require File.expand_path('../../lib/namecheap', __FILE__)
@@ -24,3 +23,4 @@ require File.expand_path('../../lib/namecheap', __FILE__)
 RSpec.configure do |config|
   config.mock_with :mocha
 end
+
