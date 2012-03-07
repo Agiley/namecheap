@@ -1,4 +1,4 @@
-h1. Ruby Wrapper for Namecheap.com API
+h1. Ruby Wrapper for the Namecheap.com API
 
 Allow the ability to check domain availability through namecheap.com API.
 
@@ -29,9 +29,18 @@ namecheap.is_domain_available? 'hashrocket.com' # => false
   </code>
 </pre>
 
+h2. Tested Rubies
+
+Specs pass on:
+
+* Ruby 1.9.2-p290
+* Ruby 1.9.3-p0 and 1.9.3-p125
+* JRuby 1.6.7
+
 h2. Contributors
 
 * "Hashrocket":http://www.hashrocket.com
 * "Corey Grusden":http://coreygrusden.com
 * "Big Tiger":http://bigtiger.github.com
 * "Sebastian Johnsson":http://github.com/Agiley
+
