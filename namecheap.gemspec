@@ -2,8 +2,8 @@ Gem::Specification.new do |s|
   s.specification_version     = 2 if s.respond_to? :specification_version=
   s.required_rubygems_version = Gem::Requirement.new(">= 1.3.5") if s.respond_to? :required_rubygems_version=
 
-  s.name = "namecheap"
-  s.version = "0.0.1"
+  s.name = 'namecheap'
+  s.version = '0.2'
 
   s.homepage      =   "http://github.com/Agiley/namecheap"
   s.email         =   "sebastian@agiley.se"

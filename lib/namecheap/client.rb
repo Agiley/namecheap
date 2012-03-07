@@ -6,7 +6,7 @@ module Namecheap
     attr_accessor :client, :environment, :username, :key, :client_ip, :verbose
 
     def initialize(options = {})
-      env         =   defined?(Rails) ? Rails.env : :development
+      env         =   defined?(Rails) && Rails.respond_to?(:env) ? Rails.env : (ENV["RACK_ENV"] || 'development')
       config      =   YAML.load_file(File.join(Rails.root, "config/namecheap.yml"))[env.to_s] rescue nil
       config    ||=   YAML.load_file(File.join(File.dirname(__FILE__), "../generators/templates/namecheap.yml"))[env.to_s] rescue nil
 
