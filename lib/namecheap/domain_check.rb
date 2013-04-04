@@ -5,7 +5,7 @@ module Namecheap
     def initialize(item)
       @domain         =   item["Domain"]
       
-      @available      =   case item["Available"]
+      @available      =   case item["Available"].downcase
         when "true"   then  true
         when "false"  then  false
         when "error"  then  nil
