@@ -51,7 +51,14 @@ module Namecheap
       nodes   =   (@response.has_key?(key) && @response[key] && @response[key].any?) ? @response[key] : []
 
       nodes.each do |type, message|
-        values << Namecheap::Status.new(type, message) if (type && message)
+        code  =   nil
+        
+        if (message.is_a?(Hash))
+          message   =   message["__content__"]
+          code      =   message["Number"]
+        end
+        
+        values << Namecheap::Status.new(type, message, code) if (type && message)
       end
 
       send("#{key.underscore}=", values)

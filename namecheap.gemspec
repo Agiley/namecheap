@@ -11,9 +11,9 @@ Gem::Specification.new do |s|
   s.description   =   "Wrapper for Namecheap API"
   s.summary       =   "Wrapper for Namecheap API"
 
-  s.add_dependency "faraday", "~> 0.8.0.rc2"
-  s.add_dependency "agiley-faraday_middleware", "~> 0.8.3.2"
-  s.add_dependency "multi_xml", "~> 0.4.1"
+  s.add_dependency "faraday", ">= 0.8"
+  s.add_dependency "faraday_middleware", ">= 0.9.0"
+  s.add_dependency "multi_xml", ">= 0.5"
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec'

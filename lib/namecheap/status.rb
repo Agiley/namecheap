@@ -1,10 +1,11 @@
 module Namecheap
   class Status
-    attr_accessor :type, :message
+    attr_accessor :type, :message, :code
     
-    def initialize(type, message)
+    def initialize(type, message, code = nil)
       @type     =   type
       @message  =   message
+      @code     =   code
     end
 
   end

@@ -48,8 +48,8 @@ module Namecheap
         builder.request   :url_encoded
         builder.request   :retry
         builder.response  :logger if (self.verbose)
-        builder.use       FaradayMiddleware::ParseXml
-        builder.adapter   :net_http
+        builder.response  :xml,  :content_type => /\bxml$/
+        builder.adapter   Faraday.default_adapter
       end
     end
 
