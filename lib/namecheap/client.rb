@@ -23,7 +23,7 @@ module Namecheap
 
     def is_domain_available?(domain, options = {})
       results     =   domains_available?(domain, options)
-      available   =   (results && results.any?) ? results.first.available : false
+      available   =   (results && results.any?) ? results.first.available : nil
 
       return available
     end
