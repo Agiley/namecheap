@@ -27,4 +27,3 @@ describe "Namecheap DNS API"  do
   end
   
 end
-
