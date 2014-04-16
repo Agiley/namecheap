@@ -25,15 +25,21 @@ Gem::Specification.new do |s|
  lib/generators/templates/namecheap.yml
  lib/namecheap.rb
  lib/namecheap/client.rb
+ lib/namecheap/dns_record.rb
  lib/namecheap/domain_check.rb
- lib/namecheap/domain_check_response.rb
  lib/namecheap/extensions/hash.rb
  lib/namecheap/extensions/string.rb
+ lib/namecheap/modules/dns.rb
+ lib/namecheap/modules/domains.rb
  lib/namecheap/railtie.rb
- lib/namecheap/response.rb
+ lib/namecheap/responses/dns_records_response.rb
+ lib/namecheap/responses/domain_check_response.rb
+ lib/namecheap/responses/response.rb
  lib/namecheap/status.rb
  lib/tasks/namecheap_tasks.rake
  namecheap.gemspec
+ spec/namecheap.yml.example
+ spec/namecheap/namecheap_dns_spec.rb
  spec/namecheap/namecheap_domain_check_response_spec.rb
  spec/namecheap/namecheap_response_spec.rb
  spec/namecheap/namecheap_spec.rb
