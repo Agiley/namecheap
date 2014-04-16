@@ -1,5 +1,6 @@
 require 'faraday'
 require 'faraday_middleware'
+require 'domainatrix'
 
 module Namecheap
   class Client
@@ -11,36 +12,19 @@ module Namecheap
       config    ||=   YAML.load_file(File.join(File.dirname(__FILE__), "../generators/templates/namecheap.yml"))[env.to_s] rescue nil
 
       config.symbolize_keys! if (config)
-
-      self.environment  =   options[:environment] ||  config[:environment]
-      self.key          =   options[:key]         ||  config[:key]
-      self.username     =   options[:username]    ||  config[:username]
-      self.client_ip    =   options[:client_ip]   ||  config[:client_ip]
-      self.verbose      =   options[:verbose]     ||  false
+      options.symbolize_keys!
+      
+      self.environment  =   options.fetch(:environment,   config[:environment])  
+      self.key          =   options.fetch(:key,           config[:key])
+      self.username     =   options.fetch(:username,      config[:username])
+      self.client_ip    =   options.fetch(:client_ip,     config[:client_ip])
+      self.verbose      =   options.fetch(:verbose,       false)
 
       initialize_client
     end
 
-    def is_domain_available?(domain, options = {})
-      results     =   domains_available?(domain, options)
-      available   =   (results && results.any?) ? results.first.available : nil
-
-      return available
-    end
-
-    def domains_available?(domains, options = {})
-      response    =   domain_check(domains, options)
-
-      return response.results
-    end
-
-    def domain_check(domain, options = {})
-      domain      =   domain.join(",") if domain.is_a?(Array)
-      response    =   perform_query("namecheap.domains.check", {"DomainList" => domain}, options)
-      response    =   Namecheap::DomainCheckResponse.new(response)
-
-      return response
-    end
+    include Namecheap::Modules::Domains
+    include Namecheap::Modules::Dns
 
     protected
     def initialize_client

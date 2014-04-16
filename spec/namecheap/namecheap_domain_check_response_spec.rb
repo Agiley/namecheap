@@ -1,27 +1,27 @@
 require File.expand_path('../../spec_helper', __FILE__)
 
-describe Namecheap::DomainCheckResponse  do
+describe Namecheap::Responses::DomainCheckResponse  do
   
   describe "successful response from namecheap" do
     before(:each) do
-	@domain_check_response_hash = {
-	  "ApiResponse" => 
-	    {"Status"=>"OK", 
-			 "Errors"=>{},  
-			 "CommandResponse" => {
-  			   "DomainCheckResult" => [
-  		        {"Domain" => "domain1.com", "Available" => "true"},
-  		        {"Domain" => "domain2.com", "Available" => "false"},
-  		        {"Domain" => "domain.wtf", "Available" => "error", "ErrorNo" => "750", "Description" => "No response from the registry"}
-  		      ],
-  			 },
-  	    "GMTTimeDifference"=>"--6:00", 
-  	    "RequestedCommand"=>"namecheap.domains.check", 
-  	    "Server"=>"SERVER159", 
-  	    "ExecutionTime"=>"0.01", 
-  	    "xmlns"=>"http://api.namecheap.com/xml.response"}}
+    	@domain_check_response_hash = {
+    	  "ApiResponse" => 
+    	    {"Status"=>"OK", 
+    			 "Errors"=>{},  
+    			 "CommandResponse" => {
+      			   "DomainCheckResult" => [
+      		        {"Domain" => "domain1.com", "Available" => "true"},
+      		        {"Domain" => "domain2.com", "Available" => "false"},
+      		        {"Domain" => "domain.wtf", "Available" => "error", "ErrorNo" => "750", "Description" => "No response from the registry"}
+      		      ],
+      			 },
+      	    "GMTTimeDifference"=>"--6:00", 
+      	    "RequestedCommand"=>"namecheap.domains.check", 
+      	    "Server"=>"SERVER159", 
+      	    "ExecutionTime"=>"0.01", 
+      	    "xmlns"=>"http://api.namecheap.com/xml.response"}}
 
-      @response = Namecheap::DomainCheckResponse.new(@domain_check_response_hash)
+      @response = Namecheap::Responses::DomainCheckResponse.new(@domain_check_response_hash)
     end
 
     it "should have a domain check result" do

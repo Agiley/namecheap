@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 1.3.5") if s.respond_to? :required_rubygems_version=
 
   s.name = 'namecheap'
-  s.version = '0.2'
+  s.version = '0.5'
 
   s.homepage      =   "http://github.com/Agiley/namecheap"
   s.email         =   "sebastian@agiley.se"
@@ -11,9 +11,10 @@ Gem::Specification.new do |s|
   s.description   =   "Wrapper for Namecheap API"
   s.summary       =   "Wrapper for Namecheap API"
 
-  s.add_dependency 'faraday', '~> 0.8.9'
-  s.add_dependency 'faraday_middleware', '~> 0.9.0'
-  s.add_dependency 'multi_xml', '~> 0.5.5'
+  s.add_dependency 'faraday', '>= 0.8.0'
+  s.add_dependency 'faraday_middleware', '>= 0.8.0'
+  s.add_dependency 'multi_xml', '>= 0.5.5'
+  s.add_dependency 'domainatrix', '>= 0.0.11'
 
   # = MANIFEST =
  s.files = %w[

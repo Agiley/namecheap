@@ -6,3 +6,4 @@ pkg/*
 .DS_STORE
 *.sqlite3
 spec/database.yml
+spec/namecheap.yml

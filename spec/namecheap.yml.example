@@ -1,0 +1,18 @@
+---
+development:
+  environment: sandbox
+  key: apikey
+  username: apiuser
+  client_ip: 127.0.0.1
+  
+test:
+  environment: sandbox
+  key: apikey
+  username: apiuser
+  client_ip: 127.0.0.1
+
+production:
+  environment: sandbox
+  key: apikey
+  username: apiuser
+  client_ip: 127.0.0.1

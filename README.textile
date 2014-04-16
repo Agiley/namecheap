@@ -24,7 +24,7 @@ Use the client:
 
 <pre>
   <code>
-namecheap = Namecheap::Client.new
+client = Namecheap::Client.new
 namecheap.is_domain_available? 'hashrocket.com' # => false
   </code>
 </pre>

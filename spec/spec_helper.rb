@@ -24,3 +24,12 @@ RSpec.configure do |config|
   config.mock_with :mocha
 end
 
+def load_config
+  config = YAML.load_file((File.exists?('./spec/namecheap.yml')) ? './spec/namecheap.yml' : './spec/namecheap.yml.example')
+  config.symbolize_keys!
+end
+
+def init_production_connection
+  config = load_config  
+  Namecheap::Client.new(config[:production])
+end
