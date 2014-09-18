@@ -5,17 +5,17 @@ describe "NamecheapAPI Wrapper"  do
 
     describe "with defaults" do
       it "should contain a username" do
-        client = Namecheap::Client.new
+        client = Namecheapr::Client.new
         client.send(:username).should == 'apiuser'
       end
 
       it "should contain a key" do
-        client = Namecheap::Client.new
+        client = Namecheapr::Client.new
         client.send(:key).should == 'apikey'
       end
 
       it "should contain a client_ip" do
-        client = Namecheap::Client.new
+        client = Namecheapr::Client.new
         client.send(:client_ip).should == '127.0.0.1'
       end
     end
@@ -23,17 +23,17 @@ describe "NamecheapAPI Wrapper"  do
     describe "with defaults overidden" do
 
       it "shoud contain a overidden username" do
-        client = Namecheap::Client.new(:username => 'testuser')
+        client = Namecheapr::Client.new(:username => 'testuser')
         client.send(:username).should == 'testuser'
       end
 
       it "shoud contain a key" do
-        client = Namecheap::Client.new(:key => 'testkey')
+        client = Namecheapr::Client.new(:key => 'testkey')
         client.send(:key).should == 'testkey'
       end
 
       it "shoud contain a client_ip" do
-        client = Namecheap::Client.new(:client_ip => '66.11.22.44')
+        client = Namecheapr::Client.new(:client_ip => '66.11.22.44')
         client.send(:client_ip).should == '66.11.22.44'
       end
     end
@@ -41,14 +41,14 @@ describe "NamecheapAPI Wrapper"  do
 
   describe "Attempt to connect with bad credentials" do
     it "should report an error on erroneous account information" do
-      client = Namecheap::Client.new
+      client = Namecheapr::Client.new
       response = client.domain_check("fakedomain")
       response.status.should == :error
       response.success.should be_false
     end
 
     it "should give error message for invalid api key when using an invalid key" do
-      client = Namecheap::Client.new
+      client = Namecheapr::Client.new
       response = client.domain_check("fakedomain")
       response.status.should == :error
       response.success.should be_false
@@ -58,7 +58,7 @@ describe "NamecheapAPI Wrapper"  do
 
   describe "#is_domain_available?" do
     it "should return nil if connection fails" do
-      client = Namecheap::Client.new(:apikey => 'BADKEY')
+      client = Namecheapr::Client.new(:apikey => 'BADKEY')
       client.is_domain_available?('fakedomain.tld').should == nil
     end
 

@@ -31,5 +31,5 @@ end
 
 def init_production_connection
   config = load_config  
-  Namecheap::Client.new(config[:production])
+  Namecheapr::Client.new(config[:production])
 end

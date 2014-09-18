@@ -1,7 +1,7 @@
-module Namecheap
+module Namecheapr
   module Responses
     
-    class DomainCheckResponse < Namecheap::Responses::Response
+    class DomainCheckResponse < Namecheapr::Responses::Response
       attr_accessor :results
     
       def initialize(response)

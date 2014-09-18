@@ -1,4 +1,4 @@
-module Namecheap
+module Namecheapr
   module Modules
     module Dns
       
@@ -6,7 +6,7 @@ module Namecheap
         params            =   generate_domain_params(domain)
         
         response          =   perform_query("namecheap.domains.dns.getHosts", params, connection_options)
-        response          =   Namecheap::Responses::DnsRecordsResponse.new(response)
+        response          =   Namecheapr::Responses::DnsRecordsResponse.new(response)
         
         records           =   response.to_array
       end
@@ -39,7 +39,7 @@ module Namecheap
         end
         
         response          =   perform_query("namecheap.domains.dns.setHosts", params, connection_options)
-        response          =   Namecheap::Responses::Response.new(response)
+        response          =   Namecheapr::Responses::Response.new(response)
         success           =   (response.success && response.command_response && response.command_response.has_key?("DomainDNSSetHostsResult")) ? response.command_response["DomainDNSSetHostsResult"]["IsSuccess"].downcase.eql?('true') : nil
 
         return success

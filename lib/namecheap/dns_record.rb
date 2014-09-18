@@ -1,4 +1,4 @@
-module Namecheap
+module Namecheapr
   class DnsRecord
     attr_accessor :host_id, :hostname, :record_type, :address, :mx_pref, :ttl
 

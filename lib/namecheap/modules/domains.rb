@@ -1,4 +1,4 @@
-module Namecheap
+module Namecheapr
   module Modules
     module Domains
       
@@ -18,7 +18,7 @@ module Namecheap
       def domain_check(domain, options = {})
         domain      =   domain.join(",") if domain.is_a?(Array)
         response    =   perform_query("namecheap.domains.check", {"DomainList" => domain}, options)
-        response    =   Namecheap::Responses::DomainCheckResponse.new(response)
+        response    =   Namecheapr::Responses::DomainCheckResponse.new(response)
 
         return response
       end

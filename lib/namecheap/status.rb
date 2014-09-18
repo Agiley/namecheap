@@ -1,4 +1,4 @@
-module Namecheap
+module Namecheapr
   class Status
     attr_accessor :type, :message, :code
     

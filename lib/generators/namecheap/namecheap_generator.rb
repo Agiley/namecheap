@@ -1,6 +1,6 @@
 require 'generators/helpers/file_helper'
 
-module Namecheap
+module Namecheapr
   module Generators
     class NamecheapGenerator < Rails::Generators::Base
       namespace "namecheap"

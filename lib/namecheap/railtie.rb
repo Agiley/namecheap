@@ -1,6 +1,6 @@
 require 'namecheap'
 require 'rails'
-module Namecheap
+module Namecheapr
   class Railtie < Rails::Railtie
     
     rake_tasks do

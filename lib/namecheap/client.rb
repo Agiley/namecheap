@@ -2,7 +2,7 @@ require 'faraday'
 require 'faraday_middleware'
 require 'domainatrix'
 
-module Namecheap
+module Namecheapr
   class Client
     attr_accessor :client, :environment, :username, :key, :client_ip, :verbose
 
@@ -23,8 +23,8 @@ module Namecheap
       initialize_client
     end
 
-    include Namecheap::Modules::Domains
-    include Namecheap::Modules::Dns
+    include Namecheapr::Modules::Domains
+    include Namecheapr::Modules::Dns
 
     protected
     def initialize_client
@@ -59,13 +59,13 @@ module Namecheap
       })
 
       begin
-        log(:info, "[Namecheap::Client] - Sending API Request to Namecheap. Parameters: #{parameters.inspect}. Options: #{options.inspect}")
+        log(:info, "[Namecheapr::Client] - Sending API Request to Namecheap. Parameters: #{parameters.inspect}. Options: #{options.inspect}")
         response    =   self.client.get do |request|
           request.params    =   parameters
           request.options   =   options if (!options.empty?)
         end
       rescue StandardError => e
-        log(:error, "[Namecheap::Client] - Error occurred while trying to check domains. Error Class: #{e.class.name}. Error Message: #{e.message}. Stacktrace: #{e.backtrace.join("\n")}")
+        log(:error, "[Namecheapr::Client] - Error occurred while trying to check domains. Error Class: #{e.class.name}. Error Message: #{e.message}. Stacktrace: #{e.backtrace.join("\n")}")
         response    =   nil
       end
 

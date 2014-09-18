@@ -1,6 +1,6 @@
 require File.expand_path('../../spec_helper', __FILE__)
 
-describe Namecheap::Responses::DomainCheckResponse  do
+describe Namecheapr::Responses::DomainCheckResponse  do
   
   describe "successful response from namecheap" do
     before(:each) do
@@ -21,7 +21,7 @@ describe Namecheap::Responses::DomainCheckResponse  do
       	    "ExecutionTime"=>"0.01", 
       	    "xmlns"=>"http://api.namecheap.com/xml.response"}}
 
-      @response = Namecheap::Responses::DomainCheckResponse.new(@domain_check_response_hash)
+      @response = Namecheapr::Responses::DomainCheckResponse.new(@domain_check_response_hash)
     end
 
     it "should have a domain check result" do

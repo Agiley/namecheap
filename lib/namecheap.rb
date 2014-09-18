@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-module Namecheap
+module Namecheapr
   VERSION = "0.5"
 
   require File.join(File.dirname(__FILE__), 'namecheap/railtie') if defined?(Rails)

@@ -12,7 +12,7 @@
 #  <ExecutionTime>32.76</ExecutionTime>
 #</ApiResponse>
 
-module Namecheap
+module Namecheapr
   module Responses
     
     class Response
@@ -60,7 +60,7 @@ module Namecheap
             code      =   message["Number"]
           end
         
-          values << Namecheap::Status.new(type, message, code) if (type && message)
+          values << Namecheapr::Status.new(type, message, code) if (type && message)
         end
 
         send("#{key.underscore}=", values)

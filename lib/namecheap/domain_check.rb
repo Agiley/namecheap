@@ -1,4 +1,4 @@
-module Namecheap
+module Namecheapr
   class DomainCheck
     attr_accessor :domain, :available, :error, :description
 
