@@ -1,4 +1,4 @@
-require 'namecheap'
+require 'namecheapr'
 require 'rails'
 module Namecheapr
   class Railtie < Rails::Railtie

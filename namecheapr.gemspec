@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
  Gemfile
  README.textile
  Rakefile
- lib/generators/namecheapr/namecheap_generator.rb
+ lib/generators/namecheapr/namecheapr_generator.rb
  lib/generators/templates/namecheap.yml
  lib/namecheapr.rb
  lib/namecheapr/client.rb
@@ -37,16 +37,15 @@ Gem::Specification.new do |s|
  lib/namecheapr/responses/response.rb
  lib/namecheapr/status.rb
  lib/tasks/namecheap_tasks.rake
- namecheap.gemspec
+ namecheapr.gemspec
  spec/namecheap.yml.example
- spec/namecheapr/namecheap_dns_spec.rb
- spec/namecheapr/namecheap_domain_check_response_spec.rb
- spec/namecheapr/namecheap_response_spec.rb
- spec/namecheapr/namecheap_spec.rb
+ spec/namecheap/namecheap_dns_spec.rb
+ spec/namecheap/namecheap_domain_check_response_spec.rb
+ spec/namecheap/namecheap_response_spec.rb
+ spec/namecheap/namecheap_spec.rb
  spec/spec_helper.rb
  ]
  # = MANIFEST =
 
   s.test_files = s.files.select { |path| path =~ %r{^spec/*/.+\.rb} }
 end
-
