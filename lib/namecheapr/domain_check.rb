@@ -15,6 +15,8 @@ module Namecheapr
       
       @error          =   item["ErrorNo"]
       @description    =   item["Description"]
+      
+      @available      =   (@error && @error.present? && @error.to_i != 0) ? nil : @available
     end
   end
 end
